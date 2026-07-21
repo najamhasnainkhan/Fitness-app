@@ -1,8 +1,8 @@
-# Beginner Fitness App (Phase 1: Core skeleton & auth)
+# Beginner Fitness App (Phase 3: Guided home workouts)
 
 This is an MVP fitness web app for total beginners, built with **Next.js 14 + TypeScript**, **PostgreSQL + Prisma**, **Tailwind CSS**, and **custom email/password auth**.
 
-Phase 1 delivers a clean foundation:
+Phase 1 delivered a clean foundation:
 
 - Project skeleton with App Router
 - PostgreSQL + Prisma setup
@@ -11,7 +11,19 @@ Phase 1 delivers a clean foundation:
 - Signup + login forms
 - Authenticated dashboard placeholder for future workout plans, habits, and weight tracking
 
-Later phases (not implemented yet) will add beginner workout plans, guided home sessions, habits, and weight / body metrics.
+Phase 2 adds beginner workout planning:
+
+- Users can generate a simple 4-week beginner plan (home or gym)
+- Option to pick a pre-made starter plan or answer 2 quick questions
+- See today&apos;s planned session and a scrollable upcoming schedule on the dashboard
+
+Phase 3 adds guided home workouts:
+
+- Each scheduled session can be opened as a simple "follow along" page
+- Clear, beginner-friendly instructions grouped into warm-up, main block, and cool-down
+- Basic text-based timers on key exercises so users can count down without extra apps
+
+Later phases (not implemented yet) will add habits and weight / body metrics.
 
 ## Tech stack
 

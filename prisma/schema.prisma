@@ -8,14 +8,15 @@ datasource db {
 }
 
 model User {
-  id           String    @id @default(cuid())
-  email        String    @unique
+  id           String        @id @default(cuid())
+  email        String        @unique
   passwordHash String
   name         String?
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @updatedAt
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
 
   sessions     Session[]
+  workoutPlans WorkoutPlan[]
 }
 
 model Session {
@@ -25,4 +26,53 @@ model Session {
   userId       String
   createdAt    DateTime @default(now())
   expiresAt    DateTime
+}
+
+enum WorkoutPlanType {
+  TEMPLATE
+  AUTO
+}
+
+enum WorkoutEnvironment {
+  HOME
+  GYM
+}
+
+enum WorkoutSessionStatus {
+  PENDING
+  COMPLETED
+  SKIPPED
+}
+
+model WorkoutPlan {
+  id           String              @id @default(cuid())
+  user         User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId       String
+  name         String
+  type         WorkoutPlanType
+  environment  WorkoutEnvironment
+  daysPerWeek  Int
+  weeks        Int
+  startDate    DateTime
+  endDate      DateTime?
+  level        String?
+  isActive     Boolean             @default(true)
+  createdAt    DateTime            @default(now())
+
+  sessions     WorkoutSession[]
+}
+
+model WorkoutSession {
+  id              String               @id @default(cuid())
+  plan            WorkoutPlan          @relation(fields: [planId], references: [id], onDelete: Cascade)
+  planId          String
+  indexInPlan     Int
+  weekIndex       Int
+  dayIndex        Int
+  date            DateTime
+  title           String
+  focus           String?
+  intensity       String?
+  durationMinutes Int?
+  status          WorkoutSessionStatus @default(PENDING)
 }
