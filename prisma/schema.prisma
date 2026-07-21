@@ -76,3 +76,29 @@ model WorkoutSession {
   durationMinutes Int?
   status          WorkoutSessionStatus @default(PENDING)
 }
+
+enum HabitCadence {
+  DAILY
+  WEEKLY
+}
+
+model Habit {
+  id        String        @id @default(cuid())
+  user      User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  title     String
+  cadence   HabitCadence
+  createdAt DateTime      @default(now())
+  archivedAt DateTime?
+
+  completions HabitCompletion[]
+}
+
+model HabitCompletion {
+  id         String   @id @default(cuid())
+  habit      Habit    @relation(fields: [habitId], references: [id], onDelete: Cascade)
+  habitId    String
+  occurredOn DateTime
+
+  @@unique([habitId, occurredOn], name: "habitId_occurredOn")
+}

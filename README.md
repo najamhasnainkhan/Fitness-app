@@ -23,7 +23,12 @@ Phase 3 adds guided home workouts:
 - Clear, beginner-friendly instructions grouped into warm-up, main block, and cool-down
 - Basic text-based timers on key exercises so users can count down without extra apps
 
-Later phases (not implemented yet) will add habits and weight / body metrics.
+Phase 4 adds simple habit tracking:
+
+- Users can define tiny **daily or weekly habits** (e.g. "10-minute walk", "No soda today")
+- The dashboard shows a compact habits card with **recent streaks** and whether today / this week is already done
+
+Later phases (not implemented yet) will add a full habits management page and weight / body metrics.
 
 ## Tech stack
 
